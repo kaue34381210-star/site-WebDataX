@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebDataX | Desenvolvimento Web Profissional</title>
+  <meta name="description" content="WebDataX é uma empresa de desenvolvimento web focada em sites modernos, sistemas web e soluções digitais de alto impacto." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020617cc;
+      --primary: #38bdf8;
+      --secondary: #22d3ee;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --card: #020617;
+      --border: #1e293b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: linear-gradient(180deg, #020617, #020617); color: var(--text); }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      max-width: 720px;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    .cta {
+      margin-top: 40px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #020617;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      backdrop-filter: blur(12px);
+      background: #020617cc;
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav ul {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      list-style: none;
+    }
+
+    nav a { color: var(--text); text-decoration: none; font-weight: 600; }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 120px 20px;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      max-width: 700px;
+      color: var(--muted);
+      margin-bottom: 60px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #020617, #020617);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+    }
+
+    .card h3 { margin-bottom: 12px; }
+    .card p { color: var(--muted); }
+
+    .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .badge {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.6rem; }
+      section { padding: 90px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><strong>WebDataX</strong></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#processo">Processo</a></li>
+    <li><a href="#tecnologias">Tecnologias</a></li>
+    <li><a href="#dados">Dados</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>Desenvolvimento Web que gera resultado</h1>
+  <p>
+    Criamos sites e sistemas web modernos, rápidos e escaláveis para empresas que querem presença digital profissional e performance.
+  </p>
+  <div class="cta">
+    <a href="#contato" class="btn btn-primary">Solicitar proposta</a>
+    <a href="#servicos" class="btn btn-secondary">Nossos serviços</a>
+  </div>
+</header>
+
+<section id="servicos">
+  <h2>O que fazemos</h2>
+  <p class="subtitle">Somos uma empresa focada exclusivamente em desenvolvimento web profissional.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Sites Institucionais</h3>
+      <p>Sites modernos, rápidos e responsivos, pensados para transmitir credibilidade e converter visitantes em clientes.</p>
+    </div>
+    <div class="card">
+      <h3>Sistemas Web</h3>
+      <p>Aplicações web sob medida para automatizar processos e escalar operações de forma segura.</p>
+    </div>
+    <div class="card">
+      <h3>Landing Pages</h3>
+      <p>Páginas focadas em conversão, ideais para campanhas, produtos e serviços.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dados">
+  <h2>Análise de Dados & BI</h2>
+  <p class="subtitle">Transformamos dados em inteligência estratégica para decisões de alto impacto.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Dashboards Profissionais</h3>
+      <p>Criação de dashboards em Power BI e Looker Studio focados em métricas reais de negócio.</p>
+    </div>
+    <div class="card">
+      <h3>SQL & Modelagem</h3>
+      <p>Estruturação, limpeza e análise de dados com SQL para informações confiáveis.</p>
+    </div>
+    <div class="card">
+      <h3>Insights Estratégicos</h3>
+      <p>Análises que revelam oportunidades, gargalos e crescimento.</p>
+    </div>
+  </div>
+</section>
+
+<section id="processo">
+  <h2>Nosso processo</h2>
+  <p class="subtitle">Trabalhamos com um método claro e profissional do início ao fim.</p>
+  <div class="grid">
+    <div class="card"><h3>1. Planejamento</h3><p>Entendimento do negócio, público e objetivos.</p></div>
+    <div class="card"><h3>2. Design & UX</h3><p>Layout moderno focado em experiência do usuário.</p></div>
+    <div class="card"><h3>3. Desenvolvimento</h3><p>Código limpo, rápido e escalável.</p></div>
+    <div class="card"><h3>4. Publicação</h3><p>Deploy, testes e otimização.</p></div>
+  </div>
+</section>
+
+<section id="tecnologias">
+  <h2>Tecnologias</h2>
+  <p class="subtitle">Utilizamos tecnologias modernas e confiáveis.</p>
+  <div class="tech">
+    <span class="badge">HTML5</span>
+    <span class="badge">CSS3</span>
+    <span class="badge">JavaScript</span>
+    <span class="badge">Git & GitHub</span>
+    <span class="badge">APIs REST</span>
+    <span class="badge">SQL</span>
+  </div>
+</section>
+
+<section id="contato">
+  <h2>Vamos impressionar seus clientes</h2>
+  <p class="subtitle">Fale direto com a WebDataX e receba uma proposta profissional.</p>
+  <div class="cta">
+    <a href="https://wa.me/5549999267443" target="_blank" class="btn btn-primary">Falar no WhatsApp</a>
+    <a href="mailto:contato.webdatax@gmail.com" class="btn btn-secondary">Enviar Email</a>
+  </div>
+  <p style="margin-top:30px; color:var(--muted)">WhatsApp: (49) 99926-7443</p>
+</section>
+
+<footer>
+  <p>© 2026 WebDataX · Desenvolvimento Web Profissional</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('section, .card, h2, .subtitle').forEach(el => {
+    el.classList.add('hidden');
+    observer.observe(el);
+  });
+</script>
+
+<style>
+.hidden { opacity: 0; transform: translateY(60px); transition: all 0.9s ease; }
+.show { opacity: 1; transform: translateY(0); }
+</style>
+
+</body>
+</html>
