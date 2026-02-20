@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DatacodeX — o futuro dos dados</title>
-  <meta name="description" content="Tecnologia que transforma dados em resultados: desenvolvimento web premium e análise de dados com design inovador." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>DatacodeX — dados em resultados</title>
+  <meta name="description" content="Tecnologia que transforma dados em resultados: desenvolvimento web premium e análise de dados." />
   
-  <!-- modern fonts & icons -->
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
@@ -14,11 +14,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   
-  <!-- Three.js para background 3D -->
+  <!-- Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   
   <style>
-    /* ---------- reset & vars ---------- */
+    /* ----- RESET & VARIÁVEIS ----- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
       --bg: #03050a;
@@ -28,10 +28,8 @@
       --accent: #3b82f6;
       --accent-glow: rgba(59, 130, 246, 0.6);
       --border: #1e3347;
-      --grad-1: linear-gradient(145deg, #0c1e32, #08121e);
       --grad-accent: linear-gradient(135deg, #2563eb, #38bdf8);
       --shadow: 0 20px 35px -8px rgba(0,0,0,0.7), 0 0 0 1px rgba(59,130,246,0.15) inset;
-      --shadow-hover: 0 30px 45px -12px rgba(0,100,255,0.4), 0 0 0 1.5px rgba(59,130,246,0.5) inset;
     }
     body {
       background: var(--bg);
@@ -39,30 +37,22 @@
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
       line-height: 1.5;
+      width: 100%;
     }
-    /* canvas background */
+    /* canvas fixo */
     #canvas-bg {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       z-index: -1;
       pointer-events: none;
       opacity: 0.7;
     }
-    html {
-      scroll-behavior: smooth;
-    }
-    .glass {
-      background: rgba(10, 20, 30, 0.4);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      border-radius: 2rem;
-      box-shadow: var(--shadow);
-    }
-    /* ---------- preloader ---------- */
+    html { scroll-behavior: smooth; }
+    
+    /* ----- PRELOADER ----- */
     #preloader {
       position: fixed;
       inset: 0;
@@ -74,13 +64,12 @@
       transition: opacity 1s, visibility 1s;
     }
     .loader-logo {
-      font-size: 3rem;
+      font-size: clamp(2rem, 8vw, 3rem);
       font-weight: 900;
       background: var(--grad-accent);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      letter-spacing: -0.02em;
       animation: pulseGlow 2s infinite;
     }
     @keyframes pulseGlow {
@@ -88,20 +77,20 @@
       50% { text-shadow: 0 0 40px var(--accent); }
       100% { text-shadow: 0 0 10px var(--accent-glow); }
     }
-    /* ---------- navbar ---------- */
+    
+    /* ----- NAVBAR (totalmente responsiva) ----- */
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      padding: 1.5rem 2rem;
+      padding: 1rem 5%;
       z-index: 100;
       transition: 0.4s;
     }
     nav.scrolled {
-      background: rgba(3, 5, 10, 0.8);
+      background: rgba(3, 5, 10, 0.85);
       backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
     }
     .nav-container {
       max-width: 1400px;
@@ -111,7 +100,7 @@
       align-items: center;
     }
     .logo {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: 800;
       background: var(--grad-accent);
       -webkit-background-clip: text;
@@ -119,24 +108,25 @@
       color: transparent;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
     }
-    .logo i { font-size: 2rem; color: var(--accent); background: none; -webkit-background-clip: unset; }
+    .logo i { font-size: 1.8rem; color: var(--accent); background: none; }
+    
     .nav-links {
       display: flex;
-      gap: 3rem;
+      gap: 2.5rem;
       list-style: none;
+      transition: all 0.4s;
     }
     .nav-links a {
       color: var(--text);
       text-decoration: none;
       font-weight: 600;
+      font-size: 1.1rem;
       position: relative;
       padding: 0.5rem 0;
-      transition: color 0.3s;
-      font-size: 1.1rem;
     }
-    .nav-links a::before {
+    .nav-links a::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -144,11 +134,10 @@
       width: 0;
       height: 3px;
       background: var(--grad-accent);
-      transition: width 0.4s ease;
-      border-radius: 3px;
+      transition: width 0.3s;
     }
-    .nav-links a:hover { color: white; }
-    .nav-links a:hover::before { width: 100%; }
+    .nav-links a:hover::after { width: 100%; }
+    
     .mobile-menu-btn {
       display: none;
       background: none;
@@ -156,8 +145,10 @@
       color: white;
       font-size: 2rem;
       cursor: pointer;
+      z-index: 200;
     }
-    /* ---------- hero ---------- */
+    
+    /* ----- HERO ----- */
     header {
       min-height: 100vh;
       display: flex;
@@ -167,13 +158,13 @@
     }
     .hero-content {
       max-width: 1000px;
+      width: 100%;
       z-index: 2;
     }
     .hero-title {
-      font-size: clamp(3rem, 8vw, 6rem);
+      font-size: clamp(2.5rem, 10vw, 6rem);
       font-weight: 900;
-      line-height: 1;
-      margin-bottom: 2rem;
+      line-height: 1.1;
       text-transform: uppercase;
     }
     .hero-title .line {
@@ -182,7 +173,7 @@
     }
     .hero-title .word {
       display: inline-block;
-      background: linear-gradient(135deg, #fff 0%, #a0c8ff 80%);
+      background: linear-gradient(135deg, #fff, #a0c8ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -191,29 +182,29 @@
       background: var(--grad-accent);
       -webkit-background-clip: text;
       background-clip: text;
-      color: transparent;
     }
     .hero-sub {
-      font-size: 1.4rem;
+      font-size: clamp(1rem, 4vw, 1.4rem);
       color: var(--muted);
       max-width: 700px;
       margin: 2rem 0 3rem;
       backdrop-filter: blur(4px);
-      padding: 1rem 2rem;
+      padding: 1rem 1.5rem;
       border-radius: 60px;
       background: rgba(0,0,0,0.2);
       border: 1px solid rgba(255,255,255,0.05);
+      width: fit-content;
     }
     .cta-group {
       display: flex;
       gap: 1.5rem;
       flex-wrap: wrap;
     }
-    .btn-primary, .btn-secondary, .btn-whatsapp-large {
-      padding: 1.2rem 3rem;
+    .btn-primary, .btn-secondary {
+      padding: 1rem 2rem;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -223,25 +214,12 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      z-index: 1;
     }
     .btn-primary {
       background: var(--grad-accent);
       color: white;
       box-shadow: 0 15px 25px -5px var(--accent-glow);
     }
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-      z-index: -1;
-    }
-    .btn-primary:hover::before { left: 100%; }
     .btn-primary:hover { transform: scale(1.05); box-shadow: 0 25px 35px -5px var(--accent); }
     .btn-secondary {
       background: rgba(255,255,255,0.03);
@@ -254,31 +232,16 @@
       background: rgba(59,130,246,0.15);
       transform: translateY(-3px);
     }
-    .btn-whatsapp-large {
-      background: #25D366;
-      color: white;
-      font-size: 1.5rem;
-      padding: 2rem 4rem;
-      border-radius: 5rem;
-      justify-content: center;
-      box-shadow: 0 20px 30px -5px rgba(37, 211, 102, 0.4);
-    }
-    .btn-whatsapp-large:hover {
-      background: #20bd5a;
-      transform: scale(1.02);
-      box-shadow: 0 30px 40px -5px #25D366;
-    }
-    /* ---------- seções gerais ---------- */
+    
+    /* ----- SEÇÕES GERAIS ----- */
     section {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 8rem 5%;
+      padding: 5rem 5%;
     }
-    .section-header {
-      margin-bottom: 5rem;
-    }
+    .section-header { margin-bottom: 3rem; }
     .section-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.2rem, 6vw, 4rem);
       font-weight: 800;
       background: linear-gradient(135deg, #fff, #a0b8ff);
       -webkit-background-clip: text;
@@ -287,54 +250,55 @@
       display: inline-block;
     }
     .section-sub {
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 3vw, 1.3rem);
       color: var(--muted);
       max-width: 600px;
       margin-top: 1rem;
     }
-    /* cards serviços */
+    
+    /* cards grid responsivo */
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
     .service-card {
       background: var(--surface);
       backdrop-filter: blur(15px);
       border: 1px solid rgba(59,130,246,0.15);
-      border-radius: 2.5rem;
-      padding: 3rem 2rem;
+      border-radius: 2rem;
+      padding: 2.5rem 1.8rem;
       transition: 0.3s;
       box-shadow: var(--shadow);
       transform-style: preserve-3d;
-      perspective: 1000px;
     }
     .service-card:hover {
-      transform: translateY(-15px) rotateX(2deg) rotateY(2deg);
-      box-shadow: var(--shadow-hover);
+      transform: translateY(-10px);
+      box-shadow: 0 30px 45px -12px rgba(0,100,255,0.4);
       border-color: var(--accent);
     }
     .service-icon {
-      font-size: 3.5rem;
+      font-size: 2.8rem;
       background: var(--grad-accent);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       margin-bottom: 1.5rem;
     }
-    .service-card h3 { font-size: 2rem; margin-bottom: 1rem; }
-    .service-card p { color: var(--muted); font-size: 1.1rem; line-height: 1.6; }
-    /* statement */
+    .service-card h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+    .service-card p { color: var(--muted); font-size: 1rem; line-height: 1.6; }
+    
+    /* statement block */
     .statement-block {
       background: radial-gradient(circle at 30% 30%, rgba(59,130,246,0.15), transparent 60%);
-      padding: 8rem 2rem;
-      border-radius: 5rem;
-      margin: 5rem 0;
+      padding: 5rem 1.5rem;
+      border-radius: 3rem;
+      margin: 3rem 0;
       border: 1px solid rgba(59,130,246,0.2);
       text-align: center;
     }
     .statement-block h2 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2rem, 5vw, 4rem);
       font-weight: 900;
       max-width: 1000px;
       margin: 0 auto;
@@ -347,13 +311,13 @@
     .stats-grid {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 3rem;
-      margin: 6rem 0;
+      justify-content: center;
+      gap: 2rem 4rem;
+      margin: 3rem 0 0;
     }
-    .stat-item { text-align: center; }
+    .stat-item { text-align: center; min-width: 120px; }
     .stat-num {
-      font-size: 5rem;
+      font-size: clamp(3rem, 8vw, 5rem);
       font-weight: 900;
       background: var(--grad-accent);
       -webkit-background-clip: text;
@@ -361,16 +325,17 @@
       color: transparent;
       line-height: 1;
     }
-    .stat-label { font-size: 1.2rem; color: var(--muted); }
-    /* contato redesign (apenas info + botões diretos) */
+    .stat-label { font-size: 1rem; color: var(--muted); }
+    
+    /* contato cards (sem formulário) */
     .contact-modern {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
       background: rgba(0, 10, 20, 0.4);
       backdrop-filter: blur(20px);
-      border-radius: 4rem;
-      padding: 4rem;
+      border-radius: 3rem;
+      padding: 3rem 2rem;
       border: 1px solid var(--border);
     }
     .contact-info {
@@ -380,29 +345,34 @@
     }
     .info-item {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.2rem;
       align-items: center;
+      flex-wrap: wrap;
     }
     .info-icon {
-      width: 70px;
-      height: 70px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background: var(--grad-accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
+      flex-shrink: 0;
     }
-    .info-text h4 { font-size: 1.4rem; }
-    .info-text p { color: var(--muted); font-size: 1.2rem; }
+    .info-text h4 { font-size: 1.3rem; }
+    .info-text p { color: var(--muted); font-size: 1rem; word-break: break-word; }
+    .info-text a { color: inherit; text-decoration: none; }
+    
     .social-links {
       display: flex;
       gap: 1rem;
-      margin-top: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
     }
     .social-link {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
@@ -410,84 +380,126 @@
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       transition: 0.3s;
       text-decoration: none;
     }
     .social-link:hover {
       background: var(--accent);
       transform: translateY(-5px);
-      border-color: transparent;
     }
     .contact-actions {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 2rem;
+      gap: 1.5rem;
     }
-    .contact-actions .btn-whatsapp-large {
+    .btn-whatsapp-large, .btn-email-large {
       width: 100%;
-      max-width: 400px;
-    }
-    .contact-actions .btn-email-large {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      color: white;
-      padding: 1.5rem 3rem;
-      border-radius: 5rem;
-      font-size: 1.4rem;
-      text-decoration: none;
+      max-width: 350px;
+      padding: 1.2rem 1.5rem;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 0.8rem;
+      text-decoration: none;
       transition: 0.3s;
-      width: 100%;
-      max-width: 400px;
+      border: none;
     }
-    .contact-actions .btn-email-large:hover {
-      border-color: var(--accent);
-      background: rgba(59,130,246,0.1);
-      transform: scale(1.02);
+    .btn-whatsapp-large {
+      background: #25D366;
+      color: white;
+      box-shadow: 0 15px 25px -5px rgba(37, 211, 102, 0.3);
     }
+    .btn-whatsapp-large:hover { background: #20bd5a; transform: scale(1.02); }
+    .btn-email-large {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      color: white;
+    }
+    .btn-email-large:hover { border-color: var(--accent); background: rgba(59,130,246,0.1); }
+    
     /* footer */
     footer {
-      padding: 4rem 5%;
+      padding: 3rem 5%;
       border-top: 1px solid var(--border);
       background: rgba(0,0,0,0.3);
       backdrop-filter: blur(12px);
       text-align: center;
     }
-    .footer-logo { font-size: 2.5rem; font-weight: 900; background: var(--grad-accent); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .footer-links { display: flex; gap: 3rem; justify-content: center; margin: 2rem 0; }
+    .footer-logo {
+      font-size: 2rem;
+      font-weight: 900;
+      background: var(--grad-accent);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
     .footer-links a { color: var(--muted); text-decoration: none; }
     .footer-links a:hover { color: white; }
-    @media (max-width: 900px) {
-      .nav-links { 
-        position: fixed; top: 80px; left: 0; width: 100%; background: rgba(0,0,0,0.9); flex-direction: column; align-items: center; padding: 3rem; gap: 2rem; transform: translateY(-100%); opacity: 0; transition: 0.4s; backdrop-filter: blur(20px); 
-      }
-      .nav-links.active { transform: translateY(0); opacity: 1; }
+    
+    /* ----- MEDIA QUERIES ESSENCIAIS (mobile first refinado) ----- */
+    @media (max-width: 768px) {
       .mobile-menu-btn { display: block; }
-      .contact-modern { grid-template-columns: 1fr; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(3, 5, 10, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease;
+        z-index: 150;
+      }
+      .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-links a { font-size: 1.8rem; }
+      .cta-group { flex-direction: column; align-items: stretch; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+      .contact-modern { padding: 2rem 1.5rem; }
     }
-    @media (max-width: 600px) {
-      .hero-title { font-size: 3rem; }
-      .cta-group { flex-direction: column; }
-      .btn-whatsapp-large { font-size: 1.2rem; padding: 1.5rem; }
+    
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-sub { font-size: 0.95rem; padding: 0.8rem 1.2rem; }
+      .service-card { padding: 2rem 1.2rem; }
+      .stat-num { font-size: 3.5rem; }
+      .btn-whatsapp-large, .btn-email-large { font-size: 1rem; padding: 1rem; }
+    }
+    
+    /* ajuste extra para telas muito pequenas */
+    @media (max-width: 360px) {
+      .hero-title { font-size: 2rem; }
+      .logo { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="loader-logo">DATACODEX</div>
-  </div>
-
-  <!-- Canvas 3D Background -->
+  <div id="preloader"><div class="loader-logo">DATACODEX</div></div>
   <canvas id="canvas-bg"></canvas>
 
-  <!-- Navbar -->
   <nav id="navbar">
     <div class="nav-container">
       <div class="logo"><i class="fas fa-code"></i> DatacodeX</div>
@@ -500,7 +512,6 @@
     </div>
   </nav>
 
-  <!-- Hero -->
   <header id="home">
     <div class="hero-content">
       <h1 class="hero-title">
@@ -516,7 +527,6 @@
     </div>
   </header>
 
-  <!-- Services -->
   <section id="servicos">
     <div class="section-header">
       <h2 class="section-title">serviços</h2>
@@ -541,7 +551,6 @@
     </div>
   </section>
 
-  <!-- Statement with stats -->
   <div class="statement-block">
     <h2>código limpo. dados claros. resultados reais.</h2>
     <div class="stats-grid">
@@ -551,7 +560,6 @@
     </div>
   </div>
 
-  <!-- Contact section (apenas informações + links diretos) -->
   <section id="contato">
     <div class="section-header">
       <h2 class="section-title">contato</h2>
@@ -563,14 +571,14 @@
           <div class="info-icon"><i class="fas fa-envelope"></i></div>
           <div class="info-text">
             <h4>email</h4>
-            <p><a href="mailto:contato.webdatax@gmail.com" style="color: inherit; text-decoration: none;">contato.webdatax@gmail.com</a></p>
+            <p><a href="mailto:contato.webdatax@gmail.com">contato.webdatax@gmail.com</a></p>
           </div>
         </div>
         <div class="info-item">
           <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
           <div class="info-text">
             <h4>whatsapp</h4>
-            <p><a href="https://wa.me/5549999267443" target="_blank" style="color: inherit; text-decoration: none;">(49) 99926-7443</a></p>
+            <p><a href="https://wa.me/5549999267443" target="_blank">(49) 99926-7443</a></p>
           </div>
         </div>
         <div class="social-links">
@@ -581,23 +589,15 @@
         </div>
       </div>
       <div class="contact-actions">
-        <a href="https://wa.me/5549999267443" target="_blank" class="btn-whatsapp-large">
-          <i class="fab fa-whatsapp"></i> WhatsApp direto
-        </a>
-        <a href="mailto:contato.webdatax@gmail.com" class="btn-email-large">
-          <i class="fas fa-envelope"></i> Enviar e-mail
-        </a>
+        <a href="https://wa.me/5549999267443" target="_blank" class="btn-whatsapp-large"><i class="fab fa-whatsapp"></i> WhatsApp direto</a>
+        <a href="mailto:contato.webdatax@gmail.com" class="btn-email-large"><i class="fas fa-envelope"></i> Enviar e-mail</a>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="footer-logo">DATACODEX</div>
-    <div class="footer-links">
-      <a href="#home">Início</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
-    </div>
+    <div class="footer-links"><a href="#home">Início</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a></div>
     <div style="color: var(--muted);">© 2026 DatacodeX · tecnologia e dados</div>
   </footer>
 
@@ -610,40 +610,43 @@
     // mobile menu
     const menuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.getElementById('navLinks');
-    menuBtn.addEventListener('click', ()=>{
+    menuBtn.addEventListener('click', (e)=>{
+      e.stopPropagation();
       navLinks.classList.toggle('active');
       menuBtn.innerHTML = navLinks.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
     });
-    document.querySelectorAll('.nav-links a').forEach(l=> l.addEventListener('click', ()=>{
-      navLinks.classList.remove('active');
-      menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    }));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', ()=>{
+        navLinks.classList.remove('active');
+        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
 
     // navbar scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', ()=> navbar.classList.toggle('scrolled', window.scrollY > 50));
 
-    // Three.js background partículas
+    // Three.js particles responsivo
     const canvas = document.getElementById('canvas-bg');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // performance
 
     const particlesGeo = new THREE.BufferGeometry();
-    const particlesCount = 1500;
+    const particlesCount = 1200;
     const posArray = new Float32Array(particlesCount * 3);
     for(let i=0; i<particlesCount*3; i+=3) {
-      posArray[i] = (Math.random() - 0.5) * 30;
-      posArray[i+1] = (Math.random() - 0.5) * 30;
-      posArray[i+2] = (Math.random() - 0.5) * 30;
+      posArray[i] = (Math.random() - 0.5) * 40;
+      posArray[i+1] = (Math.random() - 0.5) * 40;
+      posArray[i+2] = (Math.random() - 0.5) * 40;
     }
     particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     const particlesMat = new THREE.PointsMaterial({ size: 0.1, color: '#3b82f6', transparent: true, opacity: 0.4, blending: THREE.AdditiveBlending });
     const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
     scene.add(particlesMesh);
-    camera.position.z = 15;
+    camera.position.z = 18;
 
     let mouseX = 0, mouseY = 0;
     window.addEventListener('mousemove', (e) => {
@@ -655,8 +658,8 @@
       requestAnimationFrame(animateParticles);
       particlesMesh.rotation.y += 0.0002;
       particlesMesh.rotation.x += 0.0001;
-      particlesMesh.rotation.y += mouseX * 0.0005;
-      particlesMesh.rotation.x += mouseY * 0.0005;
+      particlesMesh.rotation.y += mouseX * 0.0004;
+      particlesMesh.rotation.x += mouseY * 0.0004;
       renderer.render(scene, camera);
     }
     animateParticles();
@@ -667,7 +670,7 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // GSAP animations
+    // GSAP
     gsap.registerPlugin(ScrollTrigger);
     gsap.from('.hero-title .line', { duration: 1, y: 200, opacity: 0, stagger: 0.2, ease: 'power4' });
     gsap.from('.hero-sub', { duration: 1, y: 40, opacity: 0, delay: 0.6 });
@@ -677,7 +680,7 @@
       gsap.from(card, { scrollTrigger: { trigger: card, start: 'top 80%' }, opacity: 0, y: 100, duration: 1, delay: i*0.2 });
     });
 
-    // contador de estatísticas
+    // contador stats
     const stats = document.querySelectorAll('.stat-num');
     stats.forEach(stat => {
       const countTo = stat.getAttribute('data-count');
@@ -688,7 +691,7 @@
           let current = 0;
           const update = setInterval(() => {
             if (current >= countTo) { clearInterval(update); return; }
-            current += Math.ceil(countTo/50);
+            current += Math.ceil(countTo/40);
             stat.innerText = current > countTo ? countTo : current;
           }, 30);
         },
@@ -696,7 +699,7 @@
       });
     });
 
-    // tilt manual nos cards
+    // tilt manual simples (opcional)
     document.querySelectorAll('[data-tilt]').forEach(card => {
       card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
@@ -704,8 +707,8 @@
         const y = e.clientY - rect.top;
         const centerX = rect.width/2;
         const centerY = rect.height/2;
-        const rotX = (y - centerY) / 20;
-        const rotY = (centerX - x) / 20;
+        const rotX = (y - centerY) / 25;
+        const rotY = (centerX - x) / 25;
         card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
       });
       card.addEventListener('mouseleave', () => {
